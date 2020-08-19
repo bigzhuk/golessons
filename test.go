@@ -35,7 +35,6 @@ func producer(limit int) chan int {
 	go func() {
 		for {
 			task := rand.Intn(limit)
-			fmt.Printf("task %d \n", task)
 			tasks <- task
 			time.Sleep(time.Second)
 		}
@@ -54,7 +53,7 @@ func processor(i int) (int, error) {
 
 func terminator(results chan int) {
 	for res := range results {
-		fmt.Printf("res %d \n", res)
+		fmt.Println(res)
 	}
 }
 
